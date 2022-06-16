@@ -28,13 +28,13 @@ document.addEventListener("keydown", direction);
 let dir;
 
 function direction() {
-	if(event.keyCode == 37 && dir != "right")
+	if(event.keyCode === 37 && dir !== "right")
 		dir = "left";
-	else if(event.keyCode == 38 && dir != "down")
+	else if(event.keyCode === 38 && dir  !=="down")
 		dir = "up";
-	else if(event.keyCode == 39 && dir != "left")
+	else if(event.keyCode === 39 && dir !=="left")
 		dir = "right";
-	else if(event.keyCode == 40 && dir != "up")
+	else if(event.keyCode === 40 && dir  !== "up")
 		dir = "down";
 
 }
@@ -42,7 +42,7 @@ function direction() {
 function eatTail(head, arr) {
 	for(let i = 0; i < arr.length; i++)
 	{
-		if(head.x == arr[i].x && head.y == arr[i].y)
+		if(head.x === arr[i].x && head.y === arr[i].y)
 		{
 			clearInterval(game);
 		}
@@ -59,15 +59,15 @@ function drawGame() {
 	ctx.drawImage(foodImg, foodXY.x, foodXY.y);
 
 	for(let i = 0; i < snake.length; i++) {
-		ctx.fillStyle = i == 0 ? "green" : "red";
+		ctx.fillStyle = i === 0 ? "green" : "red";
 		ctx.fillRect(snake[i].x, snake[i].y, box, box);
 
-	};
+	}
 
 	let snakeX = snake[0].x;
 	let snakeY = snake[0].y;
 
-	if(snakeX == foodXY.x && snakeY == foodXY.y)
+	if(snakeX === foodXY.x && snakeY === foodXY.y)
 	{
 		score++;
 		foodXY = {
@@ -85,10 +85,10 @@ function drawGame() {
 		clearInterval(game);
 	
 
-	if(dir == "left") snakeX -= box;
-	if(dir == "right") snakeX += box;
-	if(dir == "up") snakeY -= box;
-	if(dir == "down") snakeY += box;
+	if(dir === "left") snakeX -= box;
+	if(dir ==="right") snakeX += box;
+	if(dir === "up") snakeY -= box;
+	if(dir === "down") snakeY += box;
 
 	let newHead = {
 		x: snakeX,
